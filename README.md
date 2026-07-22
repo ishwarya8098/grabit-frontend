@@ -1,2 +1,21 @@
 # grabit-frontend
-Frontend for Grabit app-HTML,CSS,JS
+
+Frontend for **Grabit** app - A platform for buying and selling used items in your college/city.
+
+Built with HTML, CSS, and JavaScript.
+
+## How to Run
+1. Clone the repo
+```bash
+git clone https://github.com/ishwarya8098/grabit-frontend.git
+
+## Tech Stack
+- HTML5
+- CSS3
+- JavaScript
+
+## Author
+Ishwarya - @ishwarya8098
+
+---
+

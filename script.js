@@ -56,9 +56,22 @@ function removeFromCart(index) {
   updateCart();
 }
 
+// WHATSAPP ORDER FUNCTION - ITHU NEW
 function checkout() {
   if(cart.length === 0) { alert("Cart is empty"); return; }
-  alert("Order Placed! Total: ₹" + document.getElementById("total").innerText);
+  
+  // !!! INGA UN NUMBER PODU - 91 + 10 digit !!!
+  const myWhatsApp = "918098918459"; 
+  
+  let message = "🛒 *New Order from Grabit Store* 🛒%0A%0A";
+  cart.forEach(item => {
+    message += `• ${item.name} - ₹${item.price}%0A`;
+  });
+  message += `%0A*Total: ₹${document.getElementById("total").innerText}*`;
+  
+  window.open(`https://wa.me/${myWhatsApp}?text=${message}`, '_blank');
+  
+  alert("Order sent to WhatsApp!");
   cart = [];
   updateCart();
 }

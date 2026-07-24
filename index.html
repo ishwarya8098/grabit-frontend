@@ -4,23 +4,79 @@
     <title>Grabit - Rent Anything</title>
     <style>
         body { font-family: Arial; padding: 20px; background: #f5f5f5; margin:0; }
-        h1 { color: purple; text-align:center; }
-        #items-container { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
-        .item-card { border:1px solid #ddd; padding:15px; border-radius:8px; width:250px; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-        .item-card img { width:100%; height:150px; object-fit:cover; border-radius:5px; }
-        button { background:purple; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer; width:100%; margin-top:10px; }
+        .navbar { background:purple; color:white; padding:15px; text-align:center; font-size:24px; font-weight:bold; }
+        h1 { text-align:center; color:#333; margin-top:20px; }
+        #items-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:30px; }
+        .item-card { border:1px solid #ddd; padding:15px; border-radius:10px; width:260px; background:white; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+        .item-card img { width:100%; height:160px; object-fit:cover; border-radius:8px; }
+        button { background:purple; color:white; border:none; padding:12px; border-radius:6px; cursor:pointer; width:100%; font-size:16px; margin-top:10px; }
         button:hover { background:darkviolet; }
-        #cart { position:fixed; right:20px; top:80px; border:1px solid #ccc; padding:15px; width:220px; background:white; border-radius:8px; }
+        #cart { position:fixed; right:20px; top:100px; border:1px solid #ccc; padding:15px; width:240px; background:white; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
-    <h1>Grabit - Rent Anything, Own Nothing</h1>
-    <div id="items-container">Loading...</div>
+    <div class="navbar">Grabit</div>
+    <h1>Rent Anything, Own Nothing</h1>
+    <div id="items-container">Loading items...</div>
     
     <div id="cart">
         <h3>🛒 Your Cart</h3>
         <div id="cart-items"><p>Cart empty</p></div>
     </div>
-    <script src="script.js"></script>
+
+<script>
+const WHATSAPP_NUMBER = "918098918459"; 
+
+const items = [
+  {id:1, name:"Drill Machine", price:200, image:"https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400", description:"Heavy duty drill for home use"},
+  {id:2, name:"HD Projector", price:500, image:"https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=400", description:"1080p Projector for movies"},
+  {id:3, name:"Party Tent", price:800, image:"https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400", description:"10x10 Tent for events"},
+  {id:4, name:"Sound System", price:1200, image:"https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400", description:"2 Speakers + Mic"}
+];
+
+let cart = [];
+
+function displayItems(){
+  const container = document.getElementById('items-container');
+  container.innerHTML = '';
+  items.forEach(item => {
+    container.innerHTML += `
+      <div class="item-card">
+        <img src="${item.image}">
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+        <p><b>₹${item.price}/day</b></p>
+        <button onclick="addToCart(${item.id})">Add to Cart</button>
+      </div>
+    `
+  });
+}
+
+function addToCart(id){
+  cart.push(items.find(i => i.id === id));
+  alert("Added to Cart!");
+  updateCart();
+}
+
+function updateCart(){
+  const cartDiv = document.getElementById('cart-items');
+  if(cart.length === 0){
+    cartDiv.innerHTML = "<p>Cart empty</p>";
+  } else {
+    cartDiv.innerHTML = cart.map(i => `<p>${i.name} - ₹${i.price}</p>`).join('');
+    cartDiv.innerHTML += "<button onclick='placeOrder()'>Order via WhatsApp</button>";
+  }
+}
+
+function placeOrder(){
+  let message = "Hi Grabit Order:%0A";
+  cart.forEach(i => message += `- ${i.name} - ₹${i.price}/day%0A`);
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,'_blank');
+  cart = [];
+  updateCart();
+}
+
+window.onload = displayItems;
+</script>
 </body>
 </html>

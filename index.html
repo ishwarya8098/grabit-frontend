@@ -7,6 +7,7 @@
   <style>
     body { font-family: Arial; padding: 20px; background: #f5f5f5; }
     h1 { color: #ff5722; }
+    h2 { color: #333; }
     .item-card { 
       background: white; 
       padding: 15px; 
@@ -17,12 +18,25 @@
     .item-card h3 { margin: 0; color: #333; }
     .item-card p { margin: 5px 0; color: #666; }
     .price { font-size: 20px; font-weight: bold; color: #4CAF50; }
+    input, button { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; width: 250px; display: block; }
+    button { background: #ff5722; color: white; cursor: pointer; width: 150px; }
+    button:hover { background: #e64a19; }
+    form { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
   </style>
 </head>
 <body>
 
   <h1>🛒 Grabit Store</h1>
   <p>Welcome to our store!</p>
+
+  <h2>Add New Item</h2>
+  <form id="add-item-form">
+    <input type="text" id="name" placeholder="Item Name" required>
+    <input type="number" id="price" placeholder="Price" required>
+    <input type="text" id="description" placeholder="Description">
+    <button type="submit">Add Item</button>
+  </form>
+  <hr>
 
   <!-- ITEMS LIST IDHU DHR KULU VARUM -->
   <div id="item-list">

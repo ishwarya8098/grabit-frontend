@@ -18,10 +18,11 @@
     .item-card h3 { margin: 0; color: #333; }
     .item-card p { margin: 5px 0; color: #666; }
     .price { font-size: 20px; font-weight: bold; color: #4CAF50; }
-    input, button { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; width: 250px; display: block; }
-    button { background: #ff5722; color: white; cursor: pointer; width: 150px; }
-    button:hover { background: #e64a19; }
+    input, button { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; }
+    button { background: #ff5722; color: white; cursor: pointer; }
+    button:hover { opacity: 0.9; }
     form { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+    #cart-list { background: white; padding: 15px; border-radius: 8px; }
   </style>
 </head>
 <body>
@@ -38,10 +39,18 @@
   </form>
   <hr>
 
-  <!-- ITEMS LIST IDHU DHR KULU VARUM -->
+  <!-- ITEMS LIST -->
   <div id="item-list">
     <p>Loading items...</p>
   </div>
+
+  <hr>
+  <h2>🛒 Your Cart</h2>
+  <div id="cart-list">
+    <p>Cart is empty</p>
+  </div>
+  <p><b>Total: ₹<span id="total">0</span></b></p>
+  <button onclick="checkout()" style="background:green; width:150px;">Place Order</button>
 
   <script src="script.js"></script>
 </body>

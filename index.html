@@ -1,57 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grabit Store</title>
-  <style>
-    body { font-family: Arial; padding: 20px; background: #f5f5f5; }
-    h1 { color: #ff5722; }
-    h2 { color: #333; }
-    .item-card { 
-      background: white; 
-      padding: 15px; 
-      margin: 10px 0; 
-      border-radius: 8px; 
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .item-card h3 { margin: 0; color: #333; }
-    .item-card p { margin: 5px 0; color: #666; }
-    .price { font-size: 20px; font-weight: bold; color: #4CAF50; }
-    input, button { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; }
-    button { background: #ff5722; color: white; cursor: pointer; }
-    button:hover { opacity: 0.9; }
-    form { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-    #cart-list { background: white; padding: 15px; border-radius: 8px; }
-  </style>
+    <title>Grabit - Browse Items</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+        h1 { color: purple; }
+        .item-card { border:1px solid #ddd; padding:15px; margin:10px; border-radius:8px; width:250px; display:inline-block; vertical-align:top; background:white; }
+        .item-card img { width:100%; height:150px; object-fit:cover; border-radius:5px; }
+        button { background:purple; color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; }
+        button:hover { background:darkviolet; }
+        #cart { position:fixed; right:20px; top:100px; border:1px solid #ccc; padding:15px; width:200px; background:white; border-radius:8px; }
+    </style>
 </head>
 <body>
+    <h1>Grabit - Rent Anything, Own Nothing</h1>
+    <h2>Browse Items</h2>
+    
+    <div id="items-container"></div>
+    
+    <div id="cart">
+        <h3>Your Cart</h3>
+        <div id="cart-items"><p>Cart empty</p></div>
+    </div>
 
-  <h1>🛒 Grabit Store</h1>
-  <p>Welcome to our store!</p>
-
-  <h2>Add New Item</h2>
-  <form id="add-item-form">
-    <input type="text" id="name" placeholder="Item Name" required>
-    <input type="number" id="price" placeholder="Price" required>
-    <input type="text" id="description" placeholder="Description">
-    <button type="submit">Add Item</button>
-  </form>
-  <hr>
-
-  <!-- ITEMS LIST -->
-  <div id="item-list">
-    <p>Loading items...</p>
-  </div>
-
-  <hr>
-  <h2>🛒 Your Cart</h2>
-  <div id="cart-list">
-    <p>Cart is empty</p>
-  </div>
-  <p><b>Total: ₹<span id="total">0</span></b></p>
-  <button onclick="checkout()" style="background:green; width:150px;">Place Order</button>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

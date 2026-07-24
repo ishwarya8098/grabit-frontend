@@ -9,7 +9,7 @@ async function loadItems() {
     const items = await response.json();
     
     if(items.length === 0) {
-      itemList.innerHTML = "<p>No items yet. Add some from backend!</p>";
+      itemList.innerHTML = "<p>No items yet. Add some below!</p>";
       return;
     }
 
@@ -30,5 +30,25 @@ async function loadItems() {
     itemList.innerHTML = "<p>Error loading items. Backend check pannu.</p>";
   }
 }
+
+// Form submit panna item add aagum
+document.getElementById("add-item-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const newItem = {
+    name: document.getElementById("name").value,
+    price: parseFloat(document.getElementById("price").value),
+    description: document.getElementById("description").value,
+    shop_id: 1
+  };
+  
+  await fetch(`${API_URL}/api/items`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(newItem)
+  });
+  
+  document.getElementById("add-item-form").reset();
+  loadItems(); // List ah refresh pannum
+});
 
 loadItems(); // Call panidu

@@ -3,11 +3,11 @@ const API_URL = "https://grabit-backend-ald6.onrender.com";
 // Page load aagumbodhe items ah eduka
 async function loadItems() {
   const itemList = document.getElementById("item-list");
-  
+
   try {
     const response = await fetch(`${API_URL}/api/items`);
     const items = await response.json();
-    
+
     if(items.length === 0) {
       itemList.innerHTML = "<p>No items yet. Add some below!</p>";
       return;
@@ -21,6 +21,7 @@ async function loadItems() {
           <h3>${item.name}</h3>
           <p class="price">₹${item.price}</p>
           <p>${item.description}</p>
+          <button onclick="deleteItem(${item.id})" style="background:red; width:80px;">Delete</button>
         </div>
       `;
     });
@@ -40,15 +41,25 @@ document.getElementById("add-item-form").addEventListener("submit", async (e) =>
     description: document.getElementById("description").value,
     shop_id: 1
   };
-  
+
   await fetch(`${API_URL}/api/items`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(newItem)
   });
-  
+
   document.getElementById("add-item-form").reset();
   loadItems(); // List ah refresh pannum
 });
+
+// DELETE FUNCTION - ITHU NEW
+async function deleteItem(id) {
+  if(confirm("Are you sure to delete this item?")) {
+    await fetch(`${API_URL}/api/items/${id}`, {
+      method: "DELETE"
+    });
+    loadItems(); // List refresh aagum
+  }
+}
 
 loadItems(); // Call panidu

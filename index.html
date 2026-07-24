@@ -4,20 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grabit Store</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+    h1 { color: #ff5722; }
+    .item-card { 
+      background: white; 
+      padding: 15px; 
+      margin: 10px 0; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .item-card h3 { margin: 0; color: #333; }
+    .item-card p { margin: 5px 0; color: #666; }
+    .price { font-size: 20px; font-weight: bold; color: #4CAF50; }
+  </style>
 </head>
 <body>
-  <h1>📦 Grabit Store</h1>
-  
-  <form id="itemForm">
-    <input type="text" id="name" placeholder="Item Name" required>
-    <input type="number" id="price" placeholder="Price" required>
-    <textarea id="desc" placeholder="Description"></textarea>
-    <button type="submit">Add Item</button>
-  </form>
 
-  <h2>Items</h2>
-  <div id="itemList"></div>
+  <h1>🛒 Grabit Store</h1>
+  <p>Welcome to our store!</p>
+
+  <!-- ITEMS LIST IDHU DHR KULU VARUM -->
+  <div id="item-list">
+    <p>Loading items...</p>
+  </div>
 
   <script src="script.js"></script>
 </body>

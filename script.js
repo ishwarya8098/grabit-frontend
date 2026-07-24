@@ -12,7 +12,7 @@ document.getElementById("itemForm").addEventListener("submit", async (e) => {
   const item = { name, price, description: desc };
 
   try {
-    const res = await fetch(`${API_URL}/items`, {
+    const res = await fetch(`${API_URL}/api/items`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(item),
